@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+    <button id="btn1">Ввод</button>
+    <button id="btn2">Вывод</button>
+    <textarea id="txt1" placeholder="введите число"></textarea>
+    <textarea id="txt2" placeholder="результат"></textarea>
+    <script type="text/javascript">
+        let btn1 = document.getElementById('btn1')
+        let btn2 = document.getElementById('btn2')
+        let txt1 = document.getElementById('txt1')
+        let counter = 0
+        var k=0
+        var arr = []
+        btn1.onclick = function() {
+            arr.push(parseInt(txt1.value)) //parseInt/parseFloat
+        }
+        btn2.onclick = function() {
+            for (var i = 0; i<arr.length; i++)
+            console.log(arr[i])
+            min()
+            max()
+            mathWait()
+            mathSqrt()
+        }
+//Наименьший элемент массива
+        function min() {
+           var min = arr[0]
+            for(var a=0; a<arr.length; a++){
+                if (min>arr[a]) {
+                min = arr[a]
+                }
+            }   
+            console.log("min="+ min)
+            txt2.value = "min="+ min
+            return
+        }
+//Наибольший элемент массива
+        function max() {
+            var max = arr[0]
+            for(var b=0; b<arr.length; b++){
+                if (max<arr[b]) {
+                max = arr[b]
+                }
+            }  
+            console.log("max=" + max) 
+            txt2.value += "\nmax= " +  max
+            return
+        }
+//Математическое ожидание массива
+        function mathWait() {
+            var M = 0
+            for (var c=0; c<arr.length; c++){
+                var p = 1/arr.length
+                 M = arr[c]*p
+                 k += M
+            }
+            console.log("mathWait=" + k) 
+            txt2.value += " \nmathWait=" +  k
+            return
+        }
+//Среднеквадратичное отклонение элементов массива
+        function mathSqrt() {
+            var S
+            var Ssqrt
+            for(var d=0; d<arr.length; d++) {
+                if (arr.length<25){
+                    S = ((arr[d]- k)**2)/(arr.length-1)  
+                }
+                else {
+                    S = ((arr[d]- k)**2)/arr.length 
+                }
+                Ssqrt = Math.sqrt(S)
+            }
+            console.log("mathSqrt=" + Ssqrt) 
+            txt2.value += "\nmathSqrt= " +  Ssqrt
+            return
+        }
+   
+    </script>
+</body>
+</html>
